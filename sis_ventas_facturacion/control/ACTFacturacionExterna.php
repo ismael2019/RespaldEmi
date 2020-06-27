@@ -56,7 +56,7 @@ class ACTFacturacionExterna extends ACTbase{
 		$this->mensajeExito = new Mensaje();
 		$this->mensajeExito->setMensaje('EXITO', 'Reporte.php', 'Reporte generado',
 				'Se generó con éxito el reporte: ' .$nombreArchivo, 'control');
-		$this->mensajeExito->setArchivoGenerado('http://13.84.180.63/kerp/lib/lib_control/Intermediario.php?r='.$nombreArchivo);
+		$this->mensajeExito->setArchivoGenerado('http://23.96.44.28:8099/kerp/lib/lib_control/Intermediario.php?r='.$nombreArchivo);
 		$this->mensajeExito->imprimirRespuesta($this->mensajeExito->generarJson());
 
 	}

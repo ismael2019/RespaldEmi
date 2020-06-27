@@ -304,8 +304,19 @@ class RReporteFacturaA4 extends  ReportePDF{
 
   				$this->setX(22);
               if($this->formato_reporte=='sin_cantidad') {
-    		        $this->Cell($w[0],6,'  '.$detalle_conceptos_format,'LR',0,'L');
-    		        $this->Cell($w[1],6,number_format($this->detalle[$i]['precio_total'],2,',','.'),'R',0,'R');
+
+                /**********************Aqui aumentamos si tiene descuento*************************************/
+                if ($this->detalle[$i]['obs'] == 'S') {
+                  $this->Cell($w[0],6,'  '.$detalle_conceptos_format,'LR',0,'L');
+      		        $this->Cell($w[1],6,number_format($this->detalle[$i]['precio_total_sin_descuento'],2,',','.'),'R',0,'R');
+                  $this->Cell($w[0],6,'  DESCUENTO','LR',0,'L');
+      		        $this->Cell($w[1],6,'('.number_format($this->detalle[$i]['monto_descuento'],2,',','.').')','R',0,'R');
+                } else {
+                  $this->Cell($w[0],6,'  '.$detalle_conceptos_format,'LR',0,'L');
+      		        $this->Cell($w[1],6,number_format($this->detalle[$i]['precio_total_sin_descuento'],2,',','.'),'R',0,'R');
+                }
+                /*********************************************************************************************/
+
               } else {
                 $this->Cell($w[0],6,number_format($this->detalle[$i]['cantidad'], 2),'LR',0,'C');
     		        $this->Cell($w[1],6,'  '.$detalle_conceptos_format,'R',0,'L');

@@ -29,6 +29,7 @@ class MODFacturacionExterna extends MODbase
         $this->setParametro('enviar_correo','enviar_correo','varchar');
         $this->setParametro('correo_electronico','correo_electronico','varchar');
 
+
         //Ejecuta la instruccion
         $this->armarConsulta();
         $this->ejecutarConsulta();

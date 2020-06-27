@@ -5,16 +5,32 @@
 
 //Generamos el documento con REST
 
-$pxpRestClient = PxpRestClient::connect('erpmobile.obairlines.bo', 'rest/',443,'https')->setCredentialsPxp('notificaciones','Mund0libre');
-//$pxpRestClient = PxpRestClient::connect('192.168.11.82', 'kerp_capacitacion/pxp/lib/rest/')->setCredentialsPxp('admin','123');
+//$pxpRestClient = PxpRestClient::connect('erpmobile.obairlines.bo', 'rest/',443,'https')->setCredentialsPxp('notificaciones','Mund0libre');
+$pxpRestClient = PxpRestClient::connect('localhost', 'kerp/pxp/lib/rest/')->setCredentialsPxp('admin','admin');
 
+$datos = array("nit_entidad"=>"1020567023",
+							"punto_venta"=>"LA PAZ",
+							"nit_cliente"=>"66666666",
+							"razon_social"=>"ISMAEL VALDIVIA",
+							"moneda"=>"USD",
+							"tipo_cambio"=>"696",
+							"json_venta_detalle"=>"[
+																			{"id_concepto"=>null,
+																			 "descripcion"=>"PRODUCTO SIN CONCEPTO",
+																			 "cantidad"=>"100",
+																			 "precio_unitario"=>"5000"}
+																			]",
+							"exento"=>"0",
+							"observaciones"=>"CI:8888888888 cod: VARGAS ANTONIO DOMINGUEZ↵CAR:SEGUNDO SEMESTRE CARR-NO COMERCIAL TC-6.96",
+							"enviar_correo"=>"si"
+							"correo_electronico"=>"irva2008@gmail.com"
+						);
 
-/*$res = $pxpRestClient->doPost('seguridad/aesEncryption',
-    array(	"value"=>"jrivera",
-        "key"=>'123'));
+$res = $pxpRestClient->doPost('ventas_facturacion/FacturacionExterna/insertarVentaFactura',
+    $datos	);
 
 echo $res;
-*/
+
 /*
 $res = $pxpRestClient->doPost('tesoreria/PlanPago/reporteActaConformidad',
     array(	"id_proceso_wf"=>68528,

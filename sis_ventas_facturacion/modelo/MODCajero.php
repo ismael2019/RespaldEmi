@@ -519,6 +519,9 @@ class MODCajero extends MODbase{
 		$this->captura('descripcion','text');
 		$this->captura('unidad_concepto','varchar');
 		$this->captura('precio_grupo','numeric');
+		$this->captura('obs','varchar');
+		$this->captura('precio_total_sin_descuento','numeric');
+		$this->captura('monto_descuento','numeric');
 
 
 
